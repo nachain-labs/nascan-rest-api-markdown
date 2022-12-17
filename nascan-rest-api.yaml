@@ -1,0 +1,696 @@
+---
+swagger: '2.0'
+info:
+  description: NaScan REST API V1 Document
+  version: 1.0.0
+  title: NaScan REST API V1 Document
+  contact:
+    name: NaScan
+    url: https://scan.nachain.org
+host: scan.nachain.org
+basePath: "/"
+tags:
+  - name: common-api-controller
+    description: Common Api Controller
+  - name: nft-api-controller
+    description: Nft Api Controller
+paths:
+  "/api/v1/account/allTokenBalance":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query account all token balance
+      operationId: balanceUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: address
+          in: query
+          description: wallet address
+          required: true
+          type: string
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/account/balance":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query account balance
+      operationId: balanceUsingGET_1
+      produces:
+        - "*/*"
+      parameters:
+        - name: address
+          in: query
+          description: wallet address
+          required: true
+          type: string
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: tokenId
+          in: query
+          description: token id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/account/balances":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query account balance by token id
+      operationId: balancesUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: addressArray
+          in: query
+          description: wallet address array split by (,)
+          required: true
+          type: string
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: tokenId
+          in: query
+          description: token id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/basicData":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query basic data info
+      operationId: basicDataUsingGET
+      produces:
+        - "*/*"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getAllUsedTokenBalanceDetail":
+    post:
+      tags:
+        - common-api-controller
+      summary: Query all used token balance detail by address array
+      operationId: getAllUsedTokenBalanceDetailUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - "*/*"
+      parameters:
+        - name: addressArray
+          in: query
+          description: wallet address array split by (,)
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getGasFee":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query gas fee
+      operationId: getGasFeeUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getInstanceList":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query instance data
+      operationId: getInstanceListUsingGET
+      produces:
+        - "*/*"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getLastBlockHeight":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query last block height of the instance
+      operationId: getLastBlockHeightUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getMergeApiPack":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query merge api data
+      operationId: getMergeApiPackUsingGET
+      produces:
+        - "*/*"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getMergeMiner":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query merge miner data
+      operationId: getMergeMinerUsingGET
+      produces:
+        - "*/*"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getMergeMinerPage":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query merge miner data by page
+      operationId: getMergeMinerPageUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: pageIndex
+          in: query
+          description: pageIndex
+          required: false
+          type: integer
+          default: 1
+          format: int32
+        - name: pageNum
+          in: query
+          description: page number
+          required: true
+          type: integer
+          format: int32
+        - name: pageSize
+          in: query
+          description: page size
+          required: true
+          type: integer
+          format: int32
+        - name: tab
+          in: query
+          description: data type tab
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getTokenList":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query token data
+      operationId: getTokenListUsingGET
+      produces:
+        - "*/*"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getTx":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query tx data
+      operationId: getTxUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: hash
+          in: query
+          description: tx hash
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getUsedTokenBalanceDetail":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query used token balance detail
+      operationId: getUsedTokenBalanceDetailUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: address
+          in: query
+          description: wallet address
+          required: true
+          type: string
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/getUsedTokenBalanceDetailByMap":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query used token balance detail map
+      operationId: getUsedTokenBalanceDetailByMapUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: address
+          in: query
+          description: wallet address
+          required: true
+          type: string
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/nft/nftColl/detail":
+    get:
+      tags:
+        - nft-api-controller
+      summary: Query nft collection detail
+      operationId: nftCollListUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: collTokenId
+          in: query
+          description: collection token id
+          required: true
+          type: integer
+          format: int64
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: walletAddress
+          in: query
+          description: wallet address
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/nft/nftColl/list":
+    get:
+      tags:
+        - nft-api-controller
+      summary: Paging query nft collection list
+      operationId: nftCollListUsingGET_1
+      produces:
+        - "*/*"
+      parameters:
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: pageNum
+          in: query
+          description: page number
+          required: true
+          type: integer
+          format: int32
+        - name: walletAddress
+          in: query
+          description: wallet address
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/nft/nftItem/detail":
+    get:
+      tags:
+        - nft-api-controller
+      summary: Query nft item detail
+      operationId: nftItemDetailUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: collTokenId
+          in: query
+          description: collection token id
+          required: true
+          type: integer
+          format: int64
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: nftItemId
+          in: query
+          description: nft item id
+          required: true
+          type: integer
+          format: int64
+        - name: walletAddress
+          in: query
+          description: wallet address
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/nft/nftItem/list":
+    get:
+      tags:
+        - nft-api-controller
+      summary: Query nft item list
+      operationId: nftItemListUsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: collTokenId
+          in: query
+          description: collection token id
+          required: true
+          type: integer
+          format: int64
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: pageNum
+          in: query
+          description: page number
+          required: true
+          type: integer
+          format: int32
+        - name: walletAddress
+          in: query
+          description: wallet address
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/tx/detail/v2":
+    get:
+      tags:
+        - common-api-controller
+      summary: Query transaction detail info(v2)
+      operationId: txDetailV2UsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: hash
+          in: query
+          description: tx hash
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  "/api/v1/tx/txList/v2":
+    get:
+      tags:
+        - common-api-controller
+      summary: Paging query transaction detail list (v2)
+      operationId: txListV2UsingGET
+      produces:
+        - "*/*"
+      parameters:
+        - name: address
+          in: query
+          description: wallet address
+          required: true
+          type: string
+        - name: instanceId
+          in: query
+          description: instance id
+          required: true
+          type: integer
+          format: int64
+        - name: pageNum
+          in: query
+          description: page number
+          required: true
+          type: integer
+          format: int32
+        - name: tab
+          in: query
+          description: data type tab
+          required: true
+          type: integer
+          format: int32
+        - name: tokenId
+          in: query
+          description: token id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HttpResult"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+definitions:
+  HttpResult:
+    type: object
+    properties:
+      data:
+        type: object
+      flag:
+        type: boolean
+      message:
+        type: object
+    title: HttpResult
